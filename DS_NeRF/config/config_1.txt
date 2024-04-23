@@ -1,9 +1,9 @@
-expname = 1_ours
-datadir = /mnt/sfs-common/hhchen/SPIn-NeRF-master/spinnerf-dataset-inpianted/spinnerf-dataset-inpianted/1
+expname = 1
+datadir = ./data/1
 
 N_gt = 0
 
-basedir = ./logs_ours/test
+basedir = ./logs_ours
 dataset_type = llff
 
 

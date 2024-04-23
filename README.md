@@ -35,7 +35,7 @@ Take SPIn-NeRF dataset as example:
         ├── IMG_2708.png
         ├── ...
         └── IMG_2736.png
-    └── Depth_inpainted
+    └── Depth
         ├── IMG_2707.png
         ├── IMG_2708.png
         ├── ...
@@ -49,6 +49,7 @@ python DS_NeRF/run.py --config DS_NeRF/configs/config_1.txt
 
 ### Key parameters in the config file
 ```
+datadir: folder for the dataset
 factor: downscale of the image resolution of the inpainted scene 
 is_normal_guidance: control whether using normal guidance
 is_colla_guidance: control whether using multi-view guidance
