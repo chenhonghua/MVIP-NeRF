@@ -59,6 +59,10 @@ text: text prompt for the inpainted scene
 normalmap_render_factor: we use a factor to downscale the rendered normal map, due to the RAM limitation
 ```
 
+## TODO
+- [] Release video results.
+
+
 ## Acknowledgement
 The repository is based on [SPIn-NeRF](https://github.com/SamsungLabs/SPIn-NeRF) and [stable dreamfusion](https://github.com/ashawkey/stable-dreamfusion) 
 
