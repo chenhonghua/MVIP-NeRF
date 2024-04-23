@@ -7,8 +7,8 @@ This repository is for our CVPR 2024 paper '[MVIP-NeRF: Multi-view 3D Inpainting
 
 ### Dependencies and Environment
 ```
-conda create -n Pnerf python=3.8
-conda activate Pnerf
+conda create -n MVIPnerf python=3.8
+conda activate MVIPnerf
 pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
 pip install -r requirements.txt
 pip install -r requirements_df.txt
@@ -48,12 +48,13 @@ Also, for easier usage of the SPIn-NeRF dataset, we have uploaded one example. N
 python DS_NeRF/run_mvip-nerf.py --config DS_NeRF/configs/config_1.txt
 
 ### Key parameters in the config file
+```
 factor: downscale of the image resolution of the inpainted scene 
 is_normal_guidance: control whether using normal guidance
 is_colla_guidance: control whether using multi-view guidance
 text: text prompt for the inpainted scene
 normalmap_render_factor: we use a factor to downscale the rendered normal map, due to the RAM limitation
-
+```
 
 # BibTeX
 If you find our MVIP-NeRF useful in your work, please consider citing it:
