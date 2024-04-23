@@ -45,7 +45,7 @@ Take SPIn-NeRF dataset as example:
 Also, for easier usage of the SPIn-NeRF dataset, we have uploaded one example. Note that our method does not rely on explicit 2D inpaintings results.
 
 ### Quick Running
-python DS_NeRF/run_mvip-nerf.py --config DS_NeRF/configs/config_1.txt
+python DS_NeRF/run.py --config DS_NeRF/configs/config_1.txt
 
 ### Key parameters in the config file
 ```
