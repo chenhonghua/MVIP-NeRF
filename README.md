@@ -45,7 +45,9 @@ Take SPIn-NeRF dataset as example:
 Also, for easier usage of the SPIn-NeRF dataset, we have uploaded one example. Note that our method does not rely on explicit 2D inpaintings results.
 
 ### Quick Running
+```
 python DS_NeRF/run.py --config DS_NeRF/configs/config_1.txt
+```
 
 ### Key parameters in the config file
 ```
@@ -61,7 +63,7 @@ normalmap_render_factor: we use a factor to downscale the rendered normal map, d
 The repository is based on [SPIn-NeRF](https://github.com/SamsungLabs/SPIn-NeRF) and [stable dreamfusion](https://github.com/ashawkey/stable-dreamfusion) 
 
 ## License
-This project is licensed under NTU S-Lab License 1.0. Redistribution and use should follow this license.
+This project is licensed under NTU S-Lab License 1.0. Redistribution and use should follow this license (https://github.com/chenhonghua/MVIP-NeRF/blob/main/LICENSE).
 
 # BibTeX
 If you find our MVIP-NeRF useful in your work, please consider citing it:
