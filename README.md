@@ -43,3 +43,25 @@ Take SPIn-NeRF dataset as example:
 
 ```
 Also, for easier usage of the SPIn-NeRF dataset, we have uploaded one example. Note that our method does not rely on explicit 2D inpaintings results.
+
+### Quick Running
+python DS_NeRF/run_mvip-nerf.py --config DS_NeRF/configs/config_1.txt
+
+### Key parameters in the config file
+factor: downscale of the image resolution of the inpainted scene 
+is_normal_guidance: control whether using normal guidance
+is_colla_guidance: control whether using multi-view guidance
+text: text prompt for the inpainted scene
+normalmap_render_factor: we use a factor to downscale the rendered normal map, due to the RAM limitation
+
+
+# BibTeX
+If you find our MVIP-NeRF useful in your work, please consider citing it:
+```
+@inproceedings{spinnerf,
+      title={MVIP-NeRF: Multi-view 3D Inpainting on NeRF Scenes via Diffusion Prior}, 
+      author={Honghua Chen and Chen Change Loy and Xingang Pan},
+      year={2024},
+      booktitle={CVPR},
+}
+```
