@@ -60,7 +60,8 @@ normalmap_render_factor: we use a factor to downscale the rendered normal map, d
 ```
 
 ## TODO
-- [] Release video results.
+- [x] Release the code.
+- [ ] Release video results.
 
 
 ## Acknowledgement
