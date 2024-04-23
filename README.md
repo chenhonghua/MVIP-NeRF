@@ -42,11 +42,11 @@ Take SPIn-NeRF dataset as example:
         └── IMG_2736.png
 
 ```
-Also, for easier usage of the SPIn-NeRF dataset, we have uploaded one example. Note that our method does not rely on explicit 2D inpaintings results.
+Also, for easier usage of the SPIn-NeRF dataset, we have uploaded one example. Note that our method does not rely on explicit 2D inpaintings results, although we provided the inpainted inputs.
 
 ### Quick Running
 ```
-python DS_NeRF/run.py --config DS_NeRF/configs/config_1.txt
+python DS_NeRF/run.py --config DS_NeRF/config/config_1.txt
 ```
 
 ### Key parameters in the config file

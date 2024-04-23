@@ -98,7 +98,7 @@ def _load_data(basedir, factor=None, width=None, height=None, load_imgs=True, pr
     if prepare: 
         imgdir = os.path.join(basedir, 'images' + sfx)
     else:
-        imgdir = os.path.join(basedir, 'images' + sfx, 'RGB_inpainted_masked')
+        imgdir = os.path.join(basedir, 'images' + sfx, '/RGB_inpainted')
 
     mskdir = os.path.join(basedir, 'images' + sfx + '/label')
     depthdir = os.path.join(basedir, 'images' + sfx + '/Depth_inpainted')
