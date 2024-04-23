@@ -63,7 +63,7 @@ normalmap_render_factor: we use a factor to downscale the rendered normal map, d
 The repository is based on [SPIn-NeRF](https://github.com/SamsungLabs/SPIn-NeRF) and [stable dreamfusion](https://github.com/ashawkey/stable-dreamfusion) 
 
 ## License
-This project is licensed under NTU S-Lab License 1.0. Redistribution and use should follow this license (https://github.com/chenhonghua/MVIP-NeRF/blob/main/LICENSE).
+This project is licensed under NTU S-Lab License 1.0. Redistribution and use should follow [this license] (https://github.com/chenhonghua/MVIP-NeRF/blob/main/LICENSE).
 
 # BibTeX
 If you find our MVIP-NeRF useful in your work, please consider citing it:
