@@ -992,7 +992,9 @@ def train():
                                                 verbose=i < 10, retraw=True,
                                                 **render_kwargs_train)
 
-            _, disp2, _, _, _ = render(H, W, focal, chunk=args.chunk, rays=batch_inp, verbose=i < 10, retraw=True, *render_kwargs_train)
+            _, disp2, _, _, _ = render(H, W, focal, chunk=args.chunk, rays=batch_inp,
+            verbose=i < 10, retraw=True,
+            **render_kwargs_train)
         ############## add guidance loss for all pixels
 
         if args.first_stage and use_batching: # actually, we do not need this step
