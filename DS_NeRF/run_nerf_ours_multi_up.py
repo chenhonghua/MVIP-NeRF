@@ -20,6 +20,7 @@ import matplotlib.pyplot as plt
 
 from load_nerd import load_nerd_data
 from load_blender import load_blender_data
+from load_custom import load_custom_data
 from run_nerf_helpers_tcnn import NeRF_TCNN
 from run_nerf_helpers import *
 from correspondence_utils import *
