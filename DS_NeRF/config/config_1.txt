@@ -1,5 +1,5 @@
 expname = 1
-datadir = ../data/1
+datadir = ./data/1
 
 N_gt = 0
 
