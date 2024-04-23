@@ -5,7 +5,7 @@ This repository is for our CVPR 2024 paper '[MVIP-NeRF: Multi-view 3D Inpainting
 
 ## Quick Start
 
-### Dependencies
+### Dependencies and Environment
 ```
 conda create -n Pnerf python=3.8
 conda activate Pnerf
@@ -15,3 +15,31 @@ pip install -r requirements_df.txt
 pip install lpips
 pip install ConfigArgParse
 ```
+
+### Dataset preparation
+Take SPIn-NeRF dataset as example:
+```
+1
+├── images
+│   ├── IMG_2707.jpg
+│   ├── IMG_2708.jpg
+│   ├── ...
+│   └── IMG_2736.jpg
+└── images_4
+    ├── IMG_2707.png
+    ├── IMG_2708.png
+    ├── ...
+    ├── IMG_2736.png
+    └── label
+        ├── IMG_2707.png
+        ├── IMG_2708.png
+        ├── ...
+        └── IMG_2736.png
+    └── Depth_inpainted
+        ├── IMG_2707.png
+        ├── IMG_2708.png
+        ├── ...
+        └── IMG_2736.png
+
+```
+Also, for easier usage of the SPIn-NeRF dataset, we have uploaded one example. Note that our method does not rely on explicit 2D inpaintings results.
