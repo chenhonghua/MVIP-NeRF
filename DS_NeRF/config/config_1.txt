@@ -20,6 +20,8 @@ rgb_guidance_scale = 7.5
 is_colla_guidance = False
 colla_guidance_scale = 7.5
 
+is_crop = False
+
 factor = 4
 no_tcnn = False
 

@@ -925,57 +925,43 @@ def train():
             mask = masks[img_i]
             mask = torch.Tensor(mask).to(device)
             combin_rgb[select_coords[:, 0], select_coords[:, 1]] = rgb # HW3
-            
-            from torchvision.utils import save_image
+            # from torchvision.utils import save_image
             combin_rgb = combin_rgb.permute(2, 0, 1).unsqueeze(0) # 13HW
             mask = mask.unsqueeze(0).unsqueeze(0)
-            save_image(combin_rgb, f"combin_rgb.png")
+            # save_image(combin_rgb, f"combin_rgb.png")
 
-            # crop a bbox of the masked region (we can use --is_crop to toggle it)
-            # obtain the masked bounding box
-            masked = np.where(masks[img_i] != 0)
-            min_x = masked[0].min()
-            max_x = masked[0].max()
-            min_y = masked[1].min()
-            max_y = masked[1].max()
-            bb = 0
-            combin_rgb_cropped1 = combin_rgb[:, :, min_x-bb:max_x+bb, min_y-bb:max_y+bb]
-            # save_image(combin_rgb_cropped1, f"combin_rgb_masked1.png")
-            mask_cropped = mask[:, :, min_x-bb:max_x+bb, min_y-bb:max_y+bb]
+            # crop a bbox of the masked region (we do not use it)
+            if args.is_crop: 
+                masked = np.where(masks[img_i] != 0)
+                min_x = masked[0].min()
+                max_x = masked[0].max()
+                min_y = masked[1].min()
+                max_y = masked[1].max()
+                bb = 0
+                combin_rgb_cropped1 = combin_rgb[:, :, min_x-bb:max_x+bb, min_y-bb:max_y+bb]
+                # save_image(combin_rgb_cropped1, f"combin_rgb_masked1.png")
+                mask_cropped = mask[:, :, min_x-bb:max_x+bb, min_y-bb:max_y+bb]
 
             # render masked regions--for normal sds
             # Render downsampled for speed
             if args.is_normal_guidance:
-                if args.is_depth_guidance: # False
-                    # combin with unmasked regions and form a new image
-                    combin_depth = inpainted_depths[img_i]
-                    combin_depth = torch.Tensor(combin_depth).to(device)
-                    mask = masks[img_i]
-                    mask = torch.Tensor(mask).to(device)
-                
-                    combin_depth[select_coords[:, 0], select_coords[:, 1]] = disp # HW
-                    normalized_normal_map_tensor = combin_depth.unsqueeze(2).repeat(1, 1, 3) #H*W*3
-
-                    from torchvision.utils import save_image
-                    normalized_normal_map_tensor = normalized_normal_map_tensor.permute(2, 0, 1).unsqueeze(0) # 13HW
-                else:
-                    H_r = H // args.normalmap_render_factor
-                    W_r = W // args.normalmap_render_factor
-                    focal_r = focal / args.normalmap_render_factor
-                    K = np.array([
-                        [focal_r, 0, W_r / 2],
-                        [0, focal_r, H_r / 2],
-                        [0, 0, 1]
-                    ])
-                    K = torch.Tensor(K)
-                
-                    pose_i = poses[img_i]
-                    _, _, _, depth1, _ = render(H_r, W_r, focal_r, chunk=args.chunk, c2w=pose_i[:3, :4],
-                                                            verbose=i < 10, retraw=True, **render_kwargs_train)
-                    points = depth2xyz_torch(depth1.reshape(H_r, W_r), K)  
-                    points_tensor = points.unsqueeze(0).transpose(2,3).transpose(1,2) #1,3,h,w
-                    normalized_normal_map_tensor = depth2normal_geo(points_tensor) #1,3,h,w
-                    normalized_normal_map_tensor = (normalized_normal_map_tensor + 1) / 2
+                H_r = H // args.normalmap_render_factor
+                W_r = W // args.normalmap_render_factor
+                focal_r = focal / args.normalmap_render_factor
+                K = np.array([
+                    [focal_r, 0, W_r / 2],
+                    [0, focal_r, H_r / 2],
+                    [0, 0, 1]
+                ])
+                K = torch.Tensor(K)
+            
+                pose_i = poses[img_i]
+                _, _, _, depth1, _ = render(H_r, W_r, focal_r, chunk=args.chunk, c2w=pose_i[:3, :4],
+                                                        verbose=i < 10, retraw=True, **render_kwargs_train)
+                points = depth2xyz_torch(depth1.reshape(H_r, W_r), K)  
+                points_tensor = points.unsqueeze(0).transpose(2,3).transpose(1,2) #1,3,h,w
+                normalized_normal_map_tensor = depth2normal_geo(points_tensor) #1,3,h,w
+                normalized_normal_map_tensor = (normalized_normal_map_tensor + 1) / 2
             
             # collaborative rendering
             if args.is_colla_guidance:
@@ -1019,7 +1005,7 @@ def train():
                 if args.is_crop:
                     loss_rgb_sds = pre_model.cal_loss(i, None, normalized_normal_map_tensor, None, combin_rgb_cropped1, None, mask.reshape(1,1,H,W), mask_cropped, None, 1)
                 else:
-                    loss_rgb_sds = pre_model.cal_loss(i, None, normalized_normal_map_tensor, None, combin_rgb, None, mask.reshape(1,1,H,W), mask_cropped, None, 1)
+                    loss_rgb_sds = pre_model.cal_loss(i, None, normalized_normal_map_tensor, None, combin_rgb, None, mask.reshape(1,1,H,W), None, None, 1)
             else:
                 if not args.is_crop:
                     loss_rgb_sds = pre_model.cal_loss(i, None, None, None, combin_rgb, None, mask.reshape(1,1,H,W), mask_cropped, None, 1)
@@ -1795,7 +1781,6 @@ def render_rays(ray_batch,
 
     pts = rays_o[..., None, :] + rays_d[..., None, :] * \
         z_vals[..., :, None]  # [N_rays, N_samples, 3]
-
 
     if network_fn is not None: # true
         raw = network_query_fn(pts, viewdirs, network_fn)
