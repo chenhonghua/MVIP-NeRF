@@ -798,7 +798,7 @@ def train():
         time0 = time.time()
 
         # Sample random ray batch
-        print('----------------------i: ', i)
+        # print('----------------------i: ', i)
         if args.first_stage and use_batching: # actually we do not need this stage
             # Random over all images
             # batch = rays_rgb[i_batch:i_batch+N_rand] # [B, 2+1, 3*?]
@@ -1038,7 +1038,7 @@ def train():
                 loss = loss + img_loss0
 
             loss = loss + args.sds_loss_weight*loss_rgb_sds
-            print('---------------loss: ', loss)
+            # print('---------------loss: ', loss)
 
         loss.backward()
         optimizer.step()
