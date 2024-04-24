@@ -73,7 +73,7 @@ This project is licensed under NTU S-Lab License 1.0. Redistribution and use sho
 # BibTeX
 If you find our MVIP-NeRF useful in your work, please consider citing it:
 ```
-@inproceedings{spinnerf,
+@inproceedings{MVIPNeRF,
       title={MVIP-NeRF: Multi-view 3D Inpainting on NeRF Scenes via Diffusion Prior}, 
       author={Honghua Chen and Chen Change Loy and Xingang Pan},
       year={2024},
