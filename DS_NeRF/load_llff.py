@@ -151,7 +151,7 @@ def _load_data(basedir, factor=None, width=None, height=None, load_imgs=True, pr
                     msk, (imgs.shape[1], imgs.shape[0]), interpolation=cv2.INTER_NEAREST)
                 print(msk.shape)
             # todo comment this or change the dilation iterations
-            msk = cv2.dilate(msk, np.ones((5, 5), np.uint8), iterations=5)
+            # msk = cv2.dilate(msk, np.ones((5, 5), np.uint8), iterations=5)
             masks.append(msk)
             mask_indices.append(i)
         except:
