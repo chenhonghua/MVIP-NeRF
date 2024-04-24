@@ -13,7 +13,8 @@ text_normal = a normal map of park bench
 
 
 is_normal_guidance = True
-normal_guidance_scale = 7.5
+normal_guidance_scale = 1.5
+normal_start = 500
 is_rgb_guidance = True
 rgb_guidance_scale = 7.5
 is_colla_guidance = False
