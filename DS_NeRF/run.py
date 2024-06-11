@@ -1000,17 +1000,17 @@ def train():
 
             # compute the SDS loss
             if args.is_colla_guidance:
-                loss_rgb_sds = pre_model.cal_loss(i, rgbs4_tensor, normalized_normal_map_tensor, None, combin_rgb, None, mask.reshape(1,1,H,W), mask_cropped, mask4_tensor, 1)
+                loss_rgb_sds = pre_model.cal_loss(i, rgbs4_tensor, normalized_normal_map_tensor, None, combin_rgb, None, mask.reshape(1,1,H,W), mask4_tensor, 1)
             elif args.is_normal_guidance:
                 if args.is_crop:
-                    loss_rgb_sds = pre_model.cal_loss(i, None, normalized_normal_map_tensor, None, combin_rgb_cropped1, None, mask.reshape(1,1,H,W), mask_cropped, None, 1)
+                    loss_rgb_sds = pre_model.cal_loss(i, None, normalized_normal_map_tensor, None, combin_rgb_cropped1, None, mask.reshape(1,1,H,W), None, 1)
                 else:
-                    loss_rgb_sds = pre_model.cal_loss(i, None, normalized_normal_map_tensor, None, combin_rgb, None, mask.reshape(1,1,H,W), None, None, 1)
+                    loss_rgb_sds = pre_model.cal_loss(i, None, normalized_normal_map_tensor, None, combin_rgb, None, mask.reshape(1,1,H,W), None, 1)
             else:
                 if not args.is_crop:
-                    loss_rgb_sds = pre_model.cal_loss(i, None, None, None, combin_rgb, None, mask.reshape(1,1,H,W), mask_cropped, None, 1)
+                    loss_rgb_sds = pre_model.cal_loss(i, None, None, None, combin_rgb, None, mask.reshape(1,1,H,W), None, 1)
                 else:
-                    loss_rgb_sds = pre_model.cal_loss(i, None, None, None, combin_rgb_cropped1, None, mask.reshape(1,1,H,W), mask_cropped, None, 1)
+                    loss_rgb_sds = pre_model.cal_loss(i, None, None, None, combin_rgb_cropped1, None, mask.reshape(1,1,H,W), None, 1)
 
             # compute the unmasked depth loss
             depth_loss = 0.0
