@@ -219,7 +219,7 @@ class Pretrain_Model(object):
             if 'clip' in self.guidance:
                 self.embeddings['clip']['image'] = self.guidance['clip'].get_img_embeds(self.rgb)
 
-    def cal_loss(self, i, rgbs4_tensor, pre_normal_map, pred_depth, pred_rgb, rgb, masks, mask_cropped, mask4, B=1):
+    def cal_loss(self, i, rgbs4_tensor, pre_normal_map, pred_depth, pred_rgb, rgb, masks, mask4, B=1):
 
         self.rgb = rgb  # 1,3,H,W
         self.pred_rgb = pred_rgb  # 1,3,H,W
@@ -233,7 +233,7 @@ class Pretrain_Model(object):
         self.B = B
 
         self.masks = masks
-        self.mask_cropped = mask_cropped
+        # self.mask_cropped = mask_cropped
 
         # random pose on the fly
         _, _, _, phis, _ = rand_poses(self.B, self.device, self.opt,
