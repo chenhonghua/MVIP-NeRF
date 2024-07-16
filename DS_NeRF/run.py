@@ -710,6 +710,7 @@ def train():
         rays_rgb_sds = rays_rgb.reshape(-1, 3, 4)
         if not args.prepare:                                               ################# modified #####################
             rays_rgb = rays_rgb[rays_rgb[:, :, 3] == 1].reshape(-1, 3, 4)  ################# modified #####################
+            rays_inp = rays_inp[rays_rgb[:, :, 3] == 0].reshape(-1, 3, 4)       ################# modified #####################
         
         print('shuffle rays')
         print(
