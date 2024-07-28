@@ -43,6 +43,8 @@ Take SPIn-NeRF dataset as example:
 
 ```
 Also, for easier usage of the SPIn-NeRF dataset, we have uploaded one example. Note that our method does not rely on explicit 2D inpaintings results, although we provided the inpainted inputs.
+Please click [here](https://drive.google.com/drive/folders/1cSX3nOd73dbLocVH__WjDcUy8Kr9wkyE?usp=sharing) to download the used dataset. Note that if you run our code, just leave the masked area black.
+If you use them, please cite SPIn-NeRF and Remove-NeRF.
 
 ### Quick Running
 ```
